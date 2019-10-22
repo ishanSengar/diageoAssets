@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+<style>
+img {
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 50%;
+}
+</style>
+
+
+<meta charset="ISO-8859-1">
+<title>Diageo</title>
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+<BODY>
+<div class="container" style="margin:100px">
+
+<div class="row center-content">
+<div class="col" style="margin-left:100px;margin-right:100px">
+<br>
+Please enter asset id(s) corresponding to the files.
+<BR>
+<br>
+
+<span id="fooBar">&nbsp;</span>
+
+
+<form action = '{% url 'getFiles' %}' method = "POST">{% csrf_token %}
+    <input class="form-control" type="text" value="" name="batchLink" placeholder="Enter Asset ID">
+	<INPUT type="hidden" id="dataString" name="dataString" />
+	<input class="form-control btn btn-primary" type="submit" id="getFiles" value="Get files">
+
+</form>
+</div>
+</div>
+</div>
+</BODY>
+<script type="text/javascript">
+
+var i = 0;
+function add() {
+
+	//Create an input type dynamically.
+	i++;
+	var element = document.createElement("input");
+
+	element.setAttribute("type", "text");
+	element.setAttribute("name", "id"+i);
+	element.setAttribute("id", "id"+i);
+
+
+	var foo = document.getElementById("fooBar");
+
+	//Append the element in page (in span).
+	foo.appendChild(element);
+
+}
+
+
+ {#$(document).ready(function() {#}
+ {#    $('#getFiles').click(function (){#}
+ {#    	var send = "";#}
+ {#    	for(var j=0; j<=i; j++)#}
+ {#    	{#}
+ {#    		send = send + document.getElementById("id"+j).value + ";";#}
+ {#    	}#}
+ {#    	document.getElementById("dataString").value = send;#}
+ {#    });#}
+
+</script>
+
+</html>
